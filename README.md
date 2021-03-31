@@ -31,7 +31,7 @@
 |   prefecture_id  |   integer      |  null: false        |
 |   ship_date_id   |   integer      |  null: false        |
 |   price          |   integer      |  null: false        |
-|   user_id        |   references   |  foreign_key: true  |
+|   user           |   references   |  foreign_key: true  |
 
 ### Association
 - belongs_to :user
@@ -49,7 +49,7 @@
 |   block            |  string      |  null: false        |
 |   building_name    |  string      |                     |
 |   phone_number     |  string      |  null: false        |
-|   history_id       |  references  |  foreign_key: true  |
+|   history          |  references  |  foreign_key: true  |
 
 ### Association
 belongs_to :history
@@ -59,8 +59,8 @@ belongs_to :history
 
 |   Column           |   Type       |  Option            |
 |  ----------------  |  ----------  |  ----------------  | 
-|   user_id          |  references  |  foreign_key: true |
-|   item_id          |  references  |  foreign_key: true |
+|   user             |  references  |  foreign_key: true |
+|   item             |  references  |  foreign_key: true |
 
 ### Association
 - belongs_to :user
