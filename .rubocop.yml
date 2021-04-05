@@ -1,3 +1,4 @@
+AllCops:
 # 除外するディレクトリ（自動生成されたファイル）
 # デフォルト設定にある"vendor/**/*"が無効化されないように記述
  Exclude:
@@ -51,7 +52,7 @@ Metrics/BlockNesting:
 Metrics/ClassLength:
  Enabled: false
 
-# 空メソッドの場合に、1行のスタイルにしない NG例：def style1; end
+# 空メソッドの場合に、1行のスタイルにしない　NG例：def style1; end
 Style/EmptyMethod:
  EnforcedStyle: expanded
 
