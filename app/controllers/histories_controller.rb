@@ -4,7 +4,7 @@ class HistoriesController < ApplicationController
 
   def index
     @buy_history = BuyHistory.new
-    if current_user == @item.user
+    if current_user == @item.user || @item.history.present?
       redirect_to root_path
     end
   end
