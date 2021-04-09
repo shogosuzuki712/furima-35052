@@ -1,18 +1,20 @@
-class BuyHistroy
+class BuyHistory
   include ActiveModel::Model
-  attr_accessor :postcode, :prefecture_id, :city, :block, :building_name, :phone_number, :history_id, :user_id, :item_id
+  attr_accessor :postcode, :prefecture_id, :city, :block, :building_name, :phone_number, :user_id, :item_id, :token
+  
+  validates :token,         presence: true
+  validates :postcode,      presence: true, format: { with: /\A\d{3}[-]\d{4}\z/ }
+  validates :prefecture_id, numericality: { other_than: 1 }
   
   with_options presence: true do
-    validates :postcode
     validates :city
     validates :block
-    validates :building_name
-    validates :phone_number
-    validates :history_id
     validates :user_id
     validates :item_id
+    with_options format: { with: /\A\d{10,11}\z/ } do
+      validates :phone_number
+    end
   end
-  validates :prefecture_id, :numericality { other_than: 1 }
 
   def save
     history = History.create(user_id: user_id, item_id: item_id)
