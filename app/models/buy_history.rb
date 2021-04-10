@@ -2,8 +2,11 @@ class BuyHistory
   include ActiveModel::Model
   attr_accessor :postcode, :prefecture_id, :city, :block, :building_name, :phone_number, :user_id, :item_id, :token
   
-  validates :token,         presence: true
-  validates :postcode,      presence: true, format: { with: /\A\d{3}[-]\d{4}\z/ }
+  with_options presence: true do
+    validates :token
+    validates :postcode, format: { with: /\A\d{3}[-]\d{4}\z/ }
+  end
+  
   validates :prefecture_id, numericality: { other_than: 1 }
   
   with_options presence: true do

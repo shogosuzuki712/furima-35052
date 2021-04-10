@@ -3,10 +3,10 @@ class HistoriesController < ApplicationController
   before_action :set_item
 
   def index
-    @buy_history = BuyHistory.new
     if current_user == @item.user || @item.history.present?
       redirect_to root_path
     end
+    @buy_history = BuyHistory.new
   end
 
   def create

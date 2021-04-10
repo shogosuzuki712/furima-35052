@@ -65,16 +65,22 @@ RSpec.describe BuyHistory, type: :model do
       end
 
       it '電話番号が10桁未満では登録できない' do
-        @buy_history.phone_number = '123456789' #9桁
+        @buy_history.phone_number = '123456789' #9桁です
         @buy_history.valid?
         expect(@buy_history.errors.full_messages).to include "Phone number is invalid"
       end
       
       it '電話番号が11桁を超過していたら登録できない' do
-        @buy_history.phone_number = '123456789123' #12桁
+        @buy_history.phone_number = '123456789123' #12桁です
         @buy_history.valid?
         expect(@buy_history.errors.full_messages).to include "Phone number is invalid"
-      end 
+      end
+
+      it '電話番号に数字以外の文字が含まれていたら登録できない' do
+        @buy_history.phone_number = '123456789aa'
+        @buy_history.valid?
+        expect(@buy_history.errors.full_messages).to include "Phone number is invalid"
+      end
     end
   end
 end
